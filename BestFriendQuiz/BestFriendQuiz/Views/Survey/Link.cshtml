@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Survey Link";
+    var key = ViewData["Key"];
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .content-box {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-box">
+        <h1>Thank you for taking the survey!</h1>
+        <div class="third">
+            <p>You can access the survey <a href="http://localhost:5122/Survey/Solve/@key.ToString()">http://localhost:5122/Survey/Solve/@key</a></p>
+        </div>
+    </div>
+</body>
+</html>

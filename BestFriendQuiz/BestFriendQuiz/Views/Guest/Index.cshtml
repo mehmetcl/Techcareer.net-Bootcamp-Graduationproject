@@ -1,0 +1,9 @@
+﻿@model GuestKeyViewModel
+
+<form asp-controller="Guest" asp-action="Index" method="post">
+    <div class="form-group">
+        <label for="Url">URL</label>
+        <input asp-for="Url" type="text" class="form-control" id="Url" name="Url" value="">
+    </div>
+    <button type="submit" class="btn btn-primary">Gönder</button>
+</form>

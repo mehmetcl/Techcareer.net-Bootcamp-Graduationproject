@@ -1,0 +1,117 @@
+﻿@model GenericViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<style>
+  
+    body {
+        background-color: #000 !important; 
+    }
+
+   
+    h1.display-4 {
+        border-bottom: 2px solid #fff; 
+        text-align: center;
+        padding-bottom: 10px; 
+        color: #fff; 
+    }
+
+   
+
+  
+    label.form-label {
+        color: #fff;
+    }
+
+ 
+</style>
+
+<div class="row">
+ 
+</div>
+<div class="row">
+    <div class="col-4 offset-4">
+        <h1 class="display-4 border-bottom text-center pb-2">@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<body>
+    <div class="row">
+        <div class="col-4 offset-4">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width,initial-scale=1.0
+    ">
+                <title> Login</title>
+                <link rel="stylesheet" href="/css/Register.css" />
+            </head>
+
+            <form method="post" >
+                <div class="form-group mb-3">
+                    <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+
+                    <label asp-for="Firstname" class="form-label">Firstname</label>
+                    <input asp-for="Firstname" class="form-control" required="" placeholder="Enter your Firstname" />
+                    <span asp-validation-for="Firstname" class="text-danger small"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+
+                    <label asp-for="Lastname" class="form-label">Lastname</label>
+                    <input asp-for="Lastname" class="form-control" required="" placeholder="mehmet" />
+                    <span asp-validation-for="Lastname" class="text-danger small"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" required="" placeholder="P@ssWOrd!" />
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="RePassword" class="form-label">RePassword</label>
+                    <input asp-for="RePassword" type="password" class="form-control" required="" placeholder="P@ssWOrd!" />
+                    <span asp-validation-for="RePassword" class="text-danger small"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control" required="" placeholder="example@example.com" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+             
+                <div class="form-group mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="AgreeToTerms" name="AgreeToTerms" />
+                        <label class="form-check-label" for="AgreeToTerms">Admin kaydı - Debug için</label>
+                    </div>
+                </div>
+                <div class="form-group d-grid mb-3">
+                    <button type="submit" class="btn btn-primary d-block">Register</button>
+                   
+               
+            </form>
+        </div>
+    </div>
+    <script>
+        // Şifrelerin eşleşip eşleşmediğini kontrol eden fonksiyon
+        function checkPasswordMatch() {
+            var password = document.getElementById("password").value;
+            var rePassword = document.getElementById("rePassword").value;
+
+            var message = document.getElementById("passwordMatchMessage");
+
+            if (password === rePassword) {
+                message.innerText = "Passwords match!";
+            } else {
+                message.innerText = "Passwords do not match!";
+            }
+        }
+
+        // Her input değiştiğinde kontrolü yap
+        var passwordInput = document.getElementById("password");
+        var rePasswordInput = document.getElementById("rePassword");
+        passwordInput.addEventListener("input", checkPasswordMatch);
+        rePasswordInput.addEventListener("input", checkPasswordMatch);
+    </script>
+</body>
+

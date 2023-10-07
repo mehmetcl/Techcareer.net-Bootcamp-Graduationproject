@@ -1,0 +1,75 @@
+﻿@model List<TestResult>
+@{
+    ViewData["Title"] = "Survey";
+    var userId = ViewData["UserId"];
+}
+
+<div class="d-flex justify-content-end align-items-center">
+    <div class="mt-4 m-2">
+       
+        <p><strong>@Context.Request.Cookies["Firstname"]</strong></p>
+    </div>
+    <form asp-controller="Account" asp-action="Logout" method="post">
+        <button type="submit" class="btn btn-primary">Logout</button>
+    </form>
+</div>
+
+<h1>Welcome to the Survey</h1>
+
+@{
+    var roleId = @Context.Request.Cookies["RoleId"];
+
+    if (roleId != "2")
+    {
+        <h1>Çözülen Anketlerin Sonuçları</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model)
+                {
+                    <tr>
+                        <td>@result.Name</td>
+                        <td>@result.Note</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="@Url.Action("Index", "Home")">Ana Sayfaya Dön</a>
+        <a href="http://localhost:5122/Guest/Register/@userId.ToString()">Gerçek bir kullanıcı ol</a>
+        
+    }
+    else
+    {
+        <h1>Çözülen Anketlerin Sonuçları</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model)
+                {
+                    <tr>
+                        <td>@result.Name</td>
+                        <td>@result.Note</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="@Url.Action("Create", "Survey")">Anket Oluştur</a>
+        <a href="@Url.Action("Create", "Admin")">Soru Oluştur</a>
+        <a href="@Url.Action("Index", "Home")">Ana Sayfaya Dön</a>
+
+    }
+}
+
+

@@ -1,0 +1,44 @@
+﻿@model GenericViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0
+    ">
+    <title> Login</title>
+    <link rel="stylesheet" href="/css/login.css" />
+</head>
+
+<form method="post">
+
+        <h2>Login</h2>
+
+    <div class="cp"><b>How well do you know me?</b></div>
+    <div class="inputBox">
+
+        <input type="text" id="Username" name="Username" placeholder="Enter your Email" />
+
+    </div>
+
+    <div class="inputBox">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="password" id="password" name="Password" placeholder="Enter your password" />
+
+    </div>
+    <br />
+    <input type="submit" value="Login" />
+    <br />
+    <div class="links">
+        <a href="#">Forgot Password</a>
+        <a href="#">Signup</a>
+    </div>
+</form>
+<body>
+    <div></div>
+</body>
+</html>

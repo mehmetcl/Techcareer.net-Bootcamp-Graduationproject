@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+@model BestFriendQuiz.EntityLayer.Concrete.Question
+
+<h1>Create New Question</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Quest">Question</label>
+        <input asp-for="Quest" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionA">Option A</label>
+        <input asp-for="OptionA" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionB">Option B</label>
+        <input asp-for="OptionB" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionC">Option C</label>
+        <input asp-for="OptionC" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionD">Option D</label>
+        <input asp-for="OptionD" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionE">Option E</label>
+        <input asp-for="OptionE" class="form-control" />
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Add Question</button>
+</form>

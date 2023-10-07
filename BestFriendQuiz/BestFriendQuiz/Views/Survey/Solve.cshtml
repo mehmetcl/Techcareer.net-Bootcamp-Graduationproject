@@ -1,0 +1,76 @@
+﻿@model SolveViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Solve</title>
+</head>
+<body>
+    <h1>Solve the Test</h1>
+
+    <form asp-action="Solve" method="post" id="solveForm">
+        <div class="form-group">
+            <label for="solverName">Your Name:</label>
+            <input asp-for="@Model.SolverName" type="text" id="solverName" name="solverName" class="form-control" value="" />
+            <input type="hidden" asp-for="Test.Id" value="@Model.Test.Id" />
+        </div>
+
+        <div id="questionContainer">
+            @for (int i = 0; i < Model.Test.QuestionsOfSurvey.Count; i++)
+            {
+                <div class="question" style="display: none;">
+                    <div class="form-group m-3">
+                        <p>@Model.Test.QuestionsOfSurvey[i].Question.Quest</p>
+                        <label for="selectedOption">Right Option for Question @(i + 1):</label>
+                        <select asp-for="@Model.Results[i].SelectedOption" class="form-control">
+                            <option value="">Select an option</option>
+                            <option value="A">@Model.Test.QuestionsOfSurvey[i].Question.OptionA</option>
+                            <option value="B">@Model.Test.QuestionsOfSurvey[i].Question.OptionB</option>
+                            <option value="C">@Model.Test.QuestionsOfSurvey[i].Question.OptionC</option>
+                            <option value="D">@Model.Test.QuestionsOfSurvey[i].Question.OptionD</option>
+                            <option value="E">@Model.Test.QuestionsOfSurvey[i].Question.OptionE</option>
+                        </select>
+                    </div>
+                </div>
+            }
+        </div>
+        <button type="button" id="startButton">Start</button>
+        <button type="button" id="nextButton" style="display: none;">Next</button>
+        <button type="submit" id="submitButton" style="display: none;">Submit</button>
+    </form>
+
+    <script>
+        const questionContainer = document.getElementById('questionContainer');
+        const startButton = document.getElementById('startButton');
+        const nextButton = document.getElementById('nextButton');
+        const submitButton = document.getElementById('submitButton');
+        const questions = document.getElementsByClassName('question');
+        let currentQuestionIndex = 0;
+
+        startButton.addEventListener('click', () => {
+            const solverName = document.getElementById('solverName').value;
+            if (solverName) {
+                document.getElementById('solverName').setAttribute('readonly', true);
+                startButton.style.display = 'none';
+                questions[currentQuestionIndex].style.display = 'block';
+                nextButton.style.display = 'block';
+            } else {
+                alert('Please enter your name.');
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            questions[currentQuestionIndex].style.display = 'none';
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                questions[currentQuestionIndex].style.display = 'block';
+            }
+            if (currentQuestionIndex === questions.length - 1) {
+                nextButton.style.display = 'none';
+                submitButton.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

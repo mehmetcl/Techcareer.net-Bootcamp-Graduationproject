@@ -1,0 +1,42 @@
+﻿@model BestFriendQuiz.EntityLayer.Concrete.Question
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Question</h1>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+        <label asp-for="Quest">Question</label>
+        <input asp-for="Quest" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionA">Option A</label>
+        <input asp-for="OptionA" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionB">Option B</label>
+        <input asp-for="OptionB" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionC">Option C</label>
+        <input asp-for="OptionC" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionD">Option D</label>
+        <input asp-for="OptionD" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OptionE">Option E</label>
+        <input asp-for="OptionE" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Approval">Approval</label>
+        <input asp-for="Approval" type="checkbox" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+<a href="~/Admin/Index">Sorulara Dön</a>
